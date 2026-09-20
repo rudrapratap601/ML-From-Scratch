@@ -8,7 +8,7 @@ class SimLinReg:
         self.__intercept = None
 
     def get_coefficient(self):
-        return self._coefficient
+        return self.__coefficient
 
     def get_intercept(self):
         return self.__intercept
