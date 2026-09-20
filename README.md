@@ -40,7 +40,7 @@ Each project includes:
 
 |  #  | Model                        | Notebook                                                                                                                  | Status  |
 | :-: | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------- | :-----: |
-|  1  | Simple Linear Regression     | [`linear_regression/simple_linear_regression/simple_linear_regression.ipynb`](linear_regression/simple_linear_regression) | ✅ Done |
+|  1  | Simple Linear Regression     | [`linear_regression/simple_linear_regression`](linear_regression/simple_linear_regression) | ✅ Done |
 |  2  | Multiple Linear Regression   | _coming soon_                                                                                                             |   🔜    |
 |  3  | Logistic Regression          | _coming soon_                                                                                                             |   🔜    |
 |  4  | K-Nearest Neighbors          | _coming soon_                                                                                                             |   🔜    |
