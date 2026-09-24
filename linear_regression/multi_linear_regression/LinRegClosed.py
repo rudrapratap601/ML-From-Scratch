@@ -73,7 +73,7 @@ class LinRegClosed:
                 "the training data."
             )
 
-        Y_pred = X_test @ self.get_coef_() + self.get_intercept_()
+        Y_pred = X_test @ self.__coef_ + self.__intercept_
 
         return Y_pred
 
