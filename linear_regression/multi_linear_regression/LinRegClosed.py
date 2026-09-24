@@ -23,7 +23,7 @@ class LinRegClosed:
 
         # Validate input dimensions
         if X_train.ndim != 2:
-            raise ValueError("X_train must be a 2D array.")
+            raise ValueError("X_train must be a 1D or 2D array.")
 
         if Y_train.ndim != 1:
             raise ValueError("Y_train must be a 1D array.")
@@ -65,7 +65,7 @@ class LinRegClosed:
             X_test = X_test.reshape(-1, 1)
 
         if X_test.ndim != 2:
-            raise ValueError("X_test must be a 2D array.")
+            raise ValueError("X_test must be a 1D or 2D array.")
 
         if X_test.shape[1] != len(self.__coef_):
             raise ValueError(
