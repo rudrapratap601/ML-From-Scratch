@@ -77,5 +77,93 @@ class LinRegClosed:
 
         return Y_pred
 
+    def mae(self, Y_test, Y_pred):
+
+        Y_test = np.asarray(Y_test)
+        Y_pred = np.asarray(Y_pred)
+
+        if Y_test.shape[0] != Y_pred.shape[0]:
+            raise ValueError (f"Y_test and Y_pred must have same length. Got Y_test: {Y_test.shape[0]}, Y_pred: {Y_pred.shape[0]}")
+
+        n = Y_test.shape[0]
+        num = 0
+
+        for i in range(n):
+            num = num + abs(Y_test[i] - Y_pred[i])
+
+        return num / n
+
+    def mse(self, Y_test, Y_pred):
+            Y_test = np.asarray(Y_test)
+            Y_pred = np.asarray(Y_pred)
+    
+            if Y_test.shape[0] != Y_pred.shape[0]:
+                raise ValueError(f"Y_test and Y_pred must have same length. Got Y_test: {Y_test.shape[0]}, Y_pred: {Y_pred.shape[0]}")
+    
+            n = Y_test.shape[0]
+            num = 0
+    
+            for i in range(n):
+                num += (Y_test[i] - Y_pred[i]) ** 2
+    
+            return num / n
+    
+    def rmse(self, Y_test, Y_pred):
+
+        Y_test = np.asarray(Y_test)
+        Y_pred = np.asarray(Y_pred)
+
+        if Y_test.shape[0] != Y_pred.shape[0]:
+            raise ValueError (f"Y_test and Y_pred must have same length. Got Y_test: {Y_test.shape[0]}, Y_pred: {Y_pred.shape[0]}")
+        
+        return np.sqrt(self.mse(Y_test, Y_pred))
+
+    def r2_score(self, Y_test, Y_pred):
+
+        Y_test = np.asarray(Y_test)
+        Y_pred = np.asarray(Y_pred)
+
+        if Y_test.shape[0] != Y_pred.shape[0]:
+            raise ValueError (f"Y_test and Y_pred must have same length. Got Y_test: {Y_test.shape[0]}, Y_pred: {Y_pred.shape[0]}")
+
+        ssr = 0
+        ssm = 0
+
+        n = Y_test.shape[0]
+
+        Y_mean = Y_test.mean()
+
+        for i in range(n):
+            ssr += (Y_test[i] - Y_pred[i]) ** 2
+            ssm += (Y_test[i] - Y_mean) ** 2
+
+        if ssm == 0:
+            raise ValueError("Cannot calculate R2 score: all Y_test values are identical")
+
+        return 1 - (ssr / ssm)
+
+    def adj_r2_score(self, X_test, r2):
+
+        X_test = np.asarray(X_test)
+
+        if X_test.ndim == 1:
+            n = X_test.shape[0]
+            k = 1
+
+        elif X_test.ndim == 2:
+            n = X_test.shape[0]
+            k = X_test.shape[1]
+
+        else:
+            raise ValueError("X_test must be a 1D or 2D array.")
+
+        if n <= k + 1:
+            raise ValueError(
+                f"Not enough samples for Adjusted R2: "
+                f"need n > {k + 1}, but got n = {n}"
+            )
+
+        return 1 - ((1 - r2) * (n - 1)) / (n - k - 1)
+
 
     
