@@ -100,6 +100,5 @@ class SGDRegressor:
             X = (X - self.mean_) / self.std_
 
         return (
-            X @ self.__coef_
-            + self.__intercept_
+            X @ self.__coef_ + self.__intercept_
         )
