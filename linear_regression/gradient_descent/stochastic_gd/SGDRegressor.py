@@ -3,7 +3,7 @@ import numpy as np
 
 class SGDRegressor:
 
-    def __init__(self, epochs=500, lr=0.01, tolerance=1e-7, scale=True):
+    def __init__(self, epochs=500, lr=0.01, tolerance=1e-4, scale=True):
         self.epochs = epochs
         self.lr = lr
         self.tolerance = tolerance
@@ -62,8 +62,7 @@ class SGDRegressor:
             for idx in indices:
 
                 Y_pred = (
-                    X[idx] @ self.__coef_
-                    + self.__intercept_
+                    X[idx] @ self.__coef_ + self.__intercept_
                 )
 
                 error = Y[idx] - Y_pred
