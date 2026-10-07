@@ -40,7 +40,7 @@ Each project includes:
 
 |  #  | Model | Method | Path | Status |
 | :-: | :--- | :--- | :--- | :-----: |
-|  1  | **Linear Regression** | Closed-Form (OLS) | [`linear_regression`](linear_regression/) | ✅ Done |
+|  1  | **Linear Regression** | Regression | [`linear_regression`](linear_regression/) | ✅ Done |
 |  2 | **Logistic Regression** | Classification | _coming soon_ | 🔜 |
 |  3 | **K-Nearest Neighbors** | Non-parametric | _coming soon_ | 🔜 |
 |  4 | **Decision Tree** | Tree-based | _coming soon_ | 🔜 |
