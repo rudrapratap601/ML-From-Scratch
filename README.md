@@ -38,16 +38,20 @@ Each project includes:
 
 ## 🗂️ Projects
 
-|  #  | Model                        | Notebook                                                                                                                  | Status  |
-| :-: | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------- | :-----: |
-|  1  | Simple Linear Regression     | [`linear_regression/simple_linear_regression`](linear_regression/simple_linear_regression) | ✅ Done |
-|  2  | Multiple Linear Regression   | _coming soon_                                                                                                             |   🔜    |
-|  3  | Logistic Regression          | _coming soon_                                                                                                             |   🔜    |
-|  4  | K-Nearest Neighbors          | _coming soon_                                                                                                             |   🔜    |
-|  5  | Decision Tree                | _coming soon_                                                                                                             |   🔜    |
-|  6  | Support Vector Machine       | _coming soon_                                                                                                             |   🔜    |
-|  7  | K-Means Clustering           | _coming soon_                                                                                                             |   🔜    |
-|  8  | Principal Component Analysis | _coming soon_                                                                                                             |   🔜    |
+|  #  | Model | Method | Path | Status |
+| :-: | :--- | :--- | :--- | :-----: |
+|  1  | **Simple Linear Regression** | Closed-Form (OLS) | [`linear_regression/closed_form/simple_linear_regression`](linear_regression/closed_form/simple_linear_regression) | ✅ Done |
+|  2  | **Multiple Linear Regression** | Closed-Form (Normal Eq) | [`linear_regression/closed_form/multi_linear_regression`](linear_regression/closed_form/multi_linear_regression) | ✅ Done |
+|  3  | **Batch Gradient Descent (Simple)** | Iterative Optimization | [`linear_regression/gradient_descent/batch_gd/simple_linear_regression_using_gradient_descent`](linear_regression/gradient_descent/batch_gd/simple_linear_regression_using_gradient_descent) | ✅ Done |
+|  4  | **Batch Gradient Descent (Multiple)** | Iterative Optimization | [`linear_regression/gradient_descent/batch_gd/multiple_linear_regression_using_gradient_descent`](linear_regression/gradient_descent/batch_gd/multiple_linear_regression_using_gradient_descent) | ✅ Done |
+|  5  | **Stochastic Gradient Descent (SGD)** | Sample-wise Optimization | [`linear_regression/gradient_descent/stochastic_gd`](linear_regression/gradient_descent/stochastic_gd) | ✅ Done |
+|  6  | **Mini-Batch Gradient Descent (MBGD)**| Mini-Batch Optimization | [`linear_regression/gradient_descent/mini_batch_gd`](linear_regression/gradient_descent/mini_batch_gd) | ✅ Done |
+|  7  | **Logistic Regression** | Classification | _coming soon_ | 🔜 |
+|  8  | **K-Nearest Neighbors** | Non-parametric | _coming soon_ | 🔜 |
+|  9  | **Decision Tree** | Tree-based | _coming soon_ | 🔜 |
+|  10 | **Support Vector Machine** | Maximum Margin | _coming soon_ | 🔜 |
+|  11 | **K-Means Clustering** | Unsupervised | _coming soon_ | 🔜 |
+|  12 | **Principal Component Analysis** | Dimensionality Reduction | _coming soon_ | 🔜 |
 
 > 🚧 _New models are added regularly — star the repo to stay updated!_
 
@@ -123,14 +127,41 @@ ML-From-Scratch/
 ├── README.md
 ├── .gitignore
 │
-├── linear_regression/
-│   └── simple_linear_regression/
-│       ├── README.md                          # Simple Linear Regression Documentation & Math
-│       ├── SimLinReg.py                       # From-scratch implementation class
-│       ├── simple_linear_regression.ipynb     # Jupyter Notebook with full workflow
-│       └── placement_SReg.csv                 # Dataset (CGPA vs Package)
-│
-└── ...                                        # More models coming soon
+└── linear_regression/                            # 6 complete implementations
+    ├── README.md                                 # Linear Regression overview
+    ├── data/
+    │   └── placement_SReg.csv                    # Sample dataset
+    │
+    ├── closed_form/                              # Analytical solutions (OLS)
+    │   ├── README.md                             # Closed-form methods overview
+    │   ├── simple_linear_regression/
+    │   │   ├── README.md                         # Documentation & Math
+    │   │   ├── SimLinReg.py                      # Least Squares implementation
+    │   │   └── simple_linear_regression.ipynb    # Full workflow notebook
+    │   └── multi_linear_regression/
+    │       ├── README.md                         # Documentation & Math
+    │       ├── LinRegClosed.py                   # Normal Equation implementation
+    │       └── multi_linear_regression.ipynb     # Full workflow notebook
+    │
+    └── gradient_descent/                         # Iterative optimization
+        ├── README.md                             # Gradient Descent overview
+        ├── batch_gd/
+        │   ├── simple_linear_regression_using_gradient_descent/
+        │   │   ├── README.md
+        │   │   ├── GDSimLin.py
+        │   │   └── simple_linear_reg_using_gradient_descent.ipynb
+        │   └── multiple_linear_regression_using_gradient_descent/
+        │       ├── README.md
+        │       ├── GDLinReg.py
+        │       └── multiple_linear_regression_using_gradient_descent.ipynb
+        ├── stochastic_gd/
+        │   ├── README.md
+        │   ├── SGDRegressor.py
+        │   └── sgd_regressor_test.ipynb
+        └── mini_batch_gd/
+            ├── README.md
+            ├── MBGDRegressor.py
+            └── mbgd_regressor_test.ipynb
 ```
 
 <br/>
