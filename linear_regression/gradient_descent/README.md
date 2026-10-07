@@ -163,7 +163,7 @@ for start in range(0, n, batch_size):
 
 ## 📈 Visual Convergence Comparison
 
-![Batch GD vs SGD vs Mini-Batch GD Convergence Comparison](linear_regression/data/gradient_descent_comparison.png)
+![Batch GD vs SGD vs Mini-Batch GD Convergence Comparison](../data/gradient_descent_comparison.png)
 
 ---
 
