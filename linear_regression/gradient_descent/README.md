@@ -158,23 +158,7 @@ for start in range(0, n, batch_size):
 
 ## 📈 Visual Convergence Comparison
 
-```
-Loss
- │
- │╲                    Batch GD
- │ ╲_______________    (Smooth, slow)
- │  
- │   ╲  ╱╲
- │    ╲╱  ╲╱╲         Mini-Batch GD
- │        ╲ ╱╲        (Balanced)
- │         ╲╱  
- │
- │         ╲ ╱╲╱╲╱╲
- │          ╲╱    ╲╱  Stochastic GD
- │              ╲╱    (Noisy, fast)
- │
- └────────────────────────────> Epoch
-```
+![Batch GD vs SGD vs Mini-Batch GD Convergence Comparison](linear_regression/data/Gradient%20Descent%20Methods%20Comparison%20Infographic.png)
 
 ---
 
