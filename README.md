@@ -40,18 +40,13 @@ Each project includes:
 
 |  #  | Model | Method | Path | Status |
 | :-: | :--- | :--- | :--- | :-----: |
-|  1  | **Simple Linear Regression** | Closed-Form (OLS) | [`linear_regression/closed_form/simple_linear_regression`](linear_regression/closed_form/simple_linear_regression) | ✅ Done |
-|  2  | **Multiple Linear Regression** | Closed-Form (Normal Eq) | [`linear_regression/closed_form/multi_linear_regression`](linear_regression/closed_form/multi_linear_regression) | ✅ Done |
-|  3  | **Batch Gradient Descent (Simple)** | Iterative Optimization | [`linear_regression/gradient_descent/batch_gd/simple_linear_regression_using_gradient_descent`](linear_regression/gradient_descent/batch_gd/simple_linear_regression_using_gradient_descent) | ✅ Done |
-|  4  | **Batch Gradient Descent (Multiple)** | Iterative Optimization | [`linear_regression/gradient_descent/batch_gd/multiple_linear_regression_using_gradient_descent`](linear_regression/gradient_descent/batch_gd/multiple_linear_regression_using_gradient_descent) | ✅ Done |
-|  5  | **Stochastic Gradient Descent (SGD)** | Sample-wise Optimization | [`linear_regression/gradient_descent/stochastic_gd`](linear_regression/gradient_descent/stochastic_gd) | ✅ Done |
-|  6  | **Mini-Batch Gradient Descent (MBGD)**| Mini-Batch Optimization | [`linear_regression/gradient_descent/mini_batch_gd`](linear_regression/gradient_descent/mini_batch_gd) | ✅ Done |
-|  7  | **Logistic Regression** | Classification | _coming soon_ | 🔜 |
-|  8  | **K-Nearest Neighbors** | Non-parametric | _coming soon_ | 🔜 |
-|  9  | **Decision Tree** | Tree-based | _coming soon_ | 🔜 |
-|  10 | **Support Vector Machine** | Maximum Margin | _coming soon_ | 🔜 |
-|  11 | **K-Means Clustering** | Unsupervised | _coming soon_ | 🔜 |
-|  12 | **Principal Component Analysis** | Dimensionality Reduction | _coming soon_ | 🔜 |
+|  1  | **Linear Regression** | Closed-Form (OLS) | [`linear_regression`](linear_regression/) | ✅ Done |
+|  2 | **Logistic Regression** | Classification | _coming soon_ | 🔜 |
+|  3 | **K-Nearest Neighbors** | Non-parametric | _coming soon_ | 🔜 |
+|  4 | **Decision Tree** | Tree-based | _coming soon_ | 🔜 |
+|  5 | **Support Vector Machine** | Maximum Margin | _coming soon_ | 🔜 |
+|  6 | **K-Means Clustering** | Unsupervised | _coming soon_ | 🔜 |
+|  7 | **Principal Component Analysis** | Dimensionality Reduction | _coming soon_ | 🔜 |
 
 > 🚧 _New models are added regularly — star the repo to stay updated!_
 
