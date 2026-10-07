@@ -9,6 +9,7 @@ A comprehensive collection of **Gradient Descent** variants for solving Linear R
 **Gradient Descent** is an iterative optimization algorithm that finds the parameters that minimize a loss function (Mean Squared Error for regression) by taking repeated steps in the direction of the steepest descent.
 
 Unlike the [closed-form solution](../closed_form), which computes optimal parameters in one analytical step, gradient descent:
+
 - **Iteratively refines** parameters over multiple epochs
 - **Scales better** to high-dimensional datasets (many features)
 - Requires **hyperparameter tuning** (learning rate, epochs, batch size)
@@ -18,12 +19,12 @@ Unlike the [closed-form solution](../closed_form), which computes optimal parame
 
 ## 🗂️ Gradient Descent Variants
 
-| Variant | Samples per Update | Updates per Epoch | Best For | Implementation | Documentation |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Batch GD (Simple)** | $n$ (all) | 1 | Small datasets, smooth convergence | [`GDSimLin.py`](batch_gd/simple_linear_regression_using_gradient_descent/GDSimLin.py) | [View README](batch_gd/simple_linear_regression_using_gradient_descent/README.md) |
-| **Batch GD (Multiple)** | $n$ (all) | 1 | Medium datasets, deterministic | [`GDLinReg.py`](batch_gd/multiple_linear_regression_using_gradient_descent/GDLinReg.py) | [View README](batch_gd/multiple_linear_regression_using_gradient_descent/README.md) |
-| **Stochastic GD** | 1 (single) | $n$ | Large/streaming data, fast updates | [`SGDRegressor.py`](stochastic_gd/SGDRegressor.py) | [View README](stochastic_gd/README.md) |
-| **Mini-Batch GD** | $b$ (batch) | $\lceil n/b \rceil$ | Production systems, GPU training | [`MBGDRegressor.py`](mini_batch_gd/MBGDRegressor.py) | [View README](mini_batch_gd/README.md) |
+| Variant                 | Samples per Update | Updates per Epoch   | Best For                           | Implementation                                                                          | Documentation                                                                       |
+| :---------------------- | :----------------- | :------------------ | :--------------------------------- | :-------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| **Batch GD (Simple)**   | $n$ (all)          | 1                   | Small datasets, smooth convergence | [`GDSimLin.py`](batch_gd/simple_linear_regression_using_gradient_descent/GDSimLin.py)   | [View README](batch_gd/simple_linear_regression_using_gradient_descent/README.md)   |
+| **Batch GD (Multiple)** | $n$ (all)          | 1                   | Medium datasets, deterministic     | [`GDLinReg.py`](batch_gd/multiple_linear_regression_using_gradient_descent/GDLinReg.py) | [View README](batch_gd/multiple_linear_regression_using_gradient_descent/README.md) |
+| **Stochastic GD**       | 1 (single)         | $n$                 | Large/streaming data, fast updates | [`SGDRegressor.py`](stochastic_gd/SGDRegressor.py)                                      | [View README](stochastic_gd/README.md)                                              |
+| **Mini-Batch GD**       | $b$ (batch)        | $\lceil n/b \rceil$ | Production systems, GPU training   | [`MBGDRegressor.py`](mini_batch_gd/MBGDRegressor.py)                                    | [View README](mini_batch_gd/README.md)                                              |
 
 ---
 
@@ -42,6 +43,7 @@ Parameters are updated iteratively using the negative gradient:
 $$\theta_{\text{new}} = \theta_{\text{old}} - \alpha \nabla_\theta L$$
 
 Where:
+
 - $\theta = [\beta_0, \beta_1, \ldots, \beta_k]$ are the parameters (intercept + coefficients)
 - $\alpha$ is the **learning rate** (step size)
 - $\nabla_\theta L$ is the gradient of the loss with respect to parameters
@@ -73,6 +75,7 @@ intercept -= lr * grad_intercept
 ```
 
 **Characteristics:**
+
 - ✅ **Smooth convergence** — deterministic gradient direction
 - ✅ **Stable** — low variance in parameter updates
 - ⚠️ **Slow** — one update per full dataset pass
@@ -96,17 +99,18 @@ for idx in indices:
     # Single sample prediction
     y_pred = X[idx] @ coef + intercept
     error = Y[idx] - y_pred
-    
+
     # Single sample gradient (no averaging)
     grad_coef = -2 * error * X[idx]
     grad_intercept = -2 * error
-    
+
     # Immediate update
     coef -= lr * grad_coef
     intercept -= lr * grad_intercept
 ```
 
 **Characteristics:**
+
 - ✅ **Fast per-epoch** — $n$ updates per epoch
 - ✅ **Low memory** — only one sample needed at a time
 - ✅ **Escapes local minima** — noise helps exploration
@@ -132,22 +136,23 @@ for start in range(0, n, batch_size):
     batch_idx = indices[start:start + batch_size]
     X_batch = X[batch_idx]
     Y_batch = Y[batch_idx]
-    
+
     # Batch prediction
     Y_pred = X_batch @ coef + intercept
     error = Y_batch - Y_pred
-    
+
     # Batch gradient
     b = len(batch_idx)
     grad_coef = (-2 / b) * (X_batch.T @ error)
     grad_intercept = (-2 / b) * np.sum(error)
-    
+
     # Update
     coef -= lr * grad_coef
     intercept -= lr * grad_intercept
 ```
 
 **Characteristics:**
+
 - ✅ **Balanced convergence** — moderate noise, stable direction
 - ✅ **Excellent GPU utilization** — vectorized batch operations
 - ✅ **Flexible** — batch size trades off speed vs stability
@@ -158,20 +163,20 @@ for start in range(0, n, batch_size):
 
 ## 📈 Visual Convergence Comparison
 
-![Batch GD vs SGD vs Mini-Batch GD Convergence Comparison](linear_regression/data/Gradient%20Descent%20Methods%20Comparison%20Infographic.png)
+![Batch GD vs SGD vs Mini-Batch GD Convergence Comparison](linear_regression/data/gradient_descent_comparison.png)
 
 ---
 
 ## ⚖️ Decision Matrix: Which Variant to Use?
 
-| Scenario | Recommended Variant | Reason |
-| :--- | :--- | :--- |
-| **Dataset: < 1,000 samples** | Batch GD | Full gradient is cheap to compute |
-| **Dataset: 1k–100k samples** | Mini-Batch GD ($b=32$ or $64$) | Best speed/stability trade-off |
-| **Dataset: > 100k samples** | Mini-Batch GD ($b=128$ or $256$) | GPU-efficient, scales well |
-| **Streaming / online learning** | Stochastic GD | One sample at a time |
-| **Research / debugging** | Batch GD | Deterministic, reproducible |
-| **Production deep learning** | Mini-Batch GD | Industry standard |
+| Scenario                        | Recommended Variant              | Reason                            |
+| :------------------------------ | :------------------------------- | :-------------------------------- |
+| **Dataset: < 1,000 samples**    | Batch GD                         | Full gradient is cheap to compute |
+| **Dataset: 1k–100k samples**    | Mini-Batch GD ($b=32$ or $64$)   | Best speed/stability trade-off    |
+| **Dataset: > 100k samples**     | Mini-Batch GD ($b=128$ or $256$) | GPU-efficient, scales well        |
+| **Streaming / online learning** | Stochastic GD                    | One sample at a time              |
+| **Research / debugging**        | Batch GD                         | Deterministic, reproducible       |
+| **Production deep learning**    | Mini-Batch GD                    | Industry standard                 |
 
 ---
 
@@ -180,25 +185,32 @@ for start in range(0, n, batch_size):
 All gradient descent implementations in this module share:
 
 ### 1. **Feature Scaling (Standardization)**
+
 ```python
 X_scaled = (X - mean) / std
 ```
+
 Essential for convergence when features have different magnitudes.
 
 ### 2. **Random Shuffling**
+
 ```python
 indices = np.random.permutation(n)
 ```
+
 Ensures each epoch presents data in a different order (SGD, Mini-Batch).
 
 ### 3. **Early Stopping**
+
 Training terminates if gradient magnitude or loss change drops below tolerance:
+
 ```python
 if abs(previous_loss - current_loss) < tolerance:
     break
 ```
 
 ### 4. **Loss Tracking**
+
 After each epoch, the full dataset loss is computed for convergence monitoring.
 
 ---
@@ -206,6 +218,7 @@ After each epoch, the full dataset loss is computed for convergence monitoring.
 ## 🚀 Quick Usage Examples
 
 ### Batch Gradient Descent
+
 ```python
 from batch_gd.multiple_linear_regression_using_gradient_descent.GDLinReg import GDLinReg
 
@@ -215,6 +228,7 @@ y_pred = model.predict(X_test)
 ```
 
 ### Stochastic Gradient Descent
+
 ```python
 from stochastic_gd.SGDRegressor import SGDRegressor
 
@@ -224,6 +238,7 @@ y_pred = model.predict(X_test)
 ```
 
 ### Mini-Batch Gradient Descent
+
 ```python
 from mini_batch_gd.MBGDRegressor import MBGDRegressor
 
