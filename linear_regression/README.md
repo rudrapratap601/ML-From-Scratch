@@ -18,8 +18,8 @@ This directory explores both major mathematical approaches to solving linear reg
 
 | Module | Approach | Equation / Method | Features | Implementation | Documentation |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Simple Linear Regression** | Closed-Form (OLS) | Least Squares Method | Single (1D) | [`SimLinReg.py`](simple_linear_regression/SimLinReg.py) | [View README](simple_linear_regression/README.md) |
-| **Multiple Linear Regression** | Closed-Form (OLS) | Normal Equation: $\beta = (X^TX)^{-1}X^Ty$ | Multiple ($k$D) | [`LinRegClosed.py`](multi_linear_regression/LinRegClosed.py) | [View README](multi_linear_regression/README.md) |
+| **Simple Linear Regression** | Closed-Form (OLS) | Least Squares Method | Single (1D) | [`SimLinReg.py`](closed_form/simple_linear_regression/SimLinReg.py) | [View README](closed_form/simple_linear_regression/README.md) |
+| **Multiple Linear Regression** | Closed-Form (OLS) | Normal Equation: $\beta = (X^TX)^{-1}X^Ty$ | Multiple ($k$D) | [`LinRegClosed.py`](closed_form/multi_linear_regression/LinRegClosed.py) | [View README](closed_form/multi_linear_regression/README.md) |
 | **Batch GD (Simple)** | Iterative (Batch) | Full dataset gradient: $\frac{\partial L}{\partial m}, \frac{\partial L}{\partial b}$ | Single (1D) | [`GDSimLin.py`](gradient_descent/batch_gd/simple_linear_regression_using_gradient_descent/GDSimLin.py) | [View README](gradient_descent/batch_gd/simple_linear_regression_using_gradient_descent/README.md) |
 | **Batch GD (Multiple)** | Iterative (Batch) | Vectorized gradient: $-\frac{2}{m}X^T(y - \hat{y})$ | Multiple ($k$D) | [`GDLinReg.py`](gradient_descent/batch_gd/multiple_linear_regression_using_gradient_descent/GDLinReg.py) | [View README](gradient_descent/batch_gd/multiple_linear_regression_using_gradient_descent/README.md) |
 | **Stochastic GD (SGD)** | Iterative (Sample) | Single-sample update: $-2(y_i - \hat{y}_i)x_i$ | Multiple ($k$D) | [`SGDRegressor.py`](gradient_descent/stochastic_gd/SGDRegressor.py) | [View README](gradient_descent/stochastic_gd/README.md) |
@@ -92,7 +92,7 @@ All models are evaluated using standard regression performance metrics implement
 
 ### 1. Closed-Form Multiple Linear Regression
 ```python
-from multi_linear_regression.LinRegClosed import LinRegClosed
+from closed_form.multi_linear_regression.LinRegClosed import LinRegClosed
 
 model = LinRegClosed()
 model.fit(X_train, Y_train)
@@ -150,17 +150,19 @@ linear_regression/
 ├── data/
 │   └── placement_SReg.csv                                # Placement dataset (CGPA vs Package)
 │
-├── simple_linear_regression/
-│   ├── README.md                                         # Simple OLS Documentation
-│   ├── SimLinReg.py                                      # Simple Linear Regression (Least Squares)
-│   └── simple_linear_regression.ipynb                    # Full analysis notebook
+├── closed_form/                                          # Closed-form (Analytical) solutions
+│   ├── README.md                                         # Closed-form overview
+│   ├── simple_linear_regression/
+│   │   ├── README.md                                     # Simple OLS Documentation
+│   │   ├── SimLinReg.py                                  # Simple Linear Regression (Least Squares)
+│   │   └── simple_linear_regression.ipynb                # Full analysis notebook
+│   └── multi_linear_regression/
+│       ├── README.md                                     # Multiple OLS Documentation
+│       ├── LinRegClosed.py                               # Multiple Linear Regression (Normal Eq)
+│       └── multi_linear_regression.ipynb                 # Full analysis notebook
 │
-├── multi_linear_regression/
-│   ├── README.md                                         # Multiple OLS Documentation
-│   ├── LinRegClosed.py                                   # Multiple Linear Regression (Normal Eq)
-│   └── multi_linear_regression.ipynb                     # Full analysis notebook
-│
-└── gradient_descent/
+└── gradient_descent/                                     # Iterative optimization methods
+    ├── README.md                                         # Gradient descent overview
     ├── batch_gd/
     │   ├── simple_linear_regression_using_gradient_descent/
     │   │   ├── README.md                                 # Simple BGD Documentation
