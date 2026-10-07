@@ -38,15 +38,15 @@ Each project includes:
 
 ## 🗂️ Projects
 
-|  #  | Model | Method | Path | Status |
-| :-: | :--- | :--- | :--- | :-----: |
-|  1  | **Linear Regression** | Regression | [`linear_regression`](linear_regression/) | ✅ Done |
-|  2 | **Logistic Regression** | Classification | _coming soon_ | 🔜 |
-|  3 | **K-Nearest Neighbors** | Non-parametric | _coming soon_ | 🔜 |
-|  4 | **Decision Tree** | Tree-based | _coming soon_ | 🔜 |
-|  5 | **Support Vector Machine** | Maximum Margin | _coming soon_ | 🔜 |
-|  6 | **K-Means Clustering** | Unsupervised | _coming soon_ | 🔜 |
-|  7 | **Principal Component Analysis** | Dimensionality Reduction | _coming soon_ | 🔜 |
+|  #  | Model                            | Method                   | Path                                      | Status  |
+| :-: | :------------------------------- | :----------------------- | :---------------------------------------- | :-----: |
+|  1  | **Linear Regression**            | Regression               | [`linear_regression`](linear_regression/) | ✅ Done |
+|  2  | **Logistic Regression**          | Classification           | _coming soon_                             |   🔜    |
+|  3  | **K-Nearest Neighbors**          | Non-parametric           | _coming soon_                             |   🔜    |
+|  4  | **Decision Tree**                | Tree-based               | _coming soon_                             |   🔜    |
+|  5  | **Support Vector Machine**       | Maximum Margin           | _coming soon_                             |   🔜    |
+|  6  | **K-Means Clustering**           | Unsupervised             | _coming soon_                             |   🔜    |
+|  7  | **Principal Component Analysis** | Dimensionality Reduction | _coming soon_                             |   🔜    |
 
 > 🚧 _New models are added regularly — star the repo to stay updated!_
 
@@ -122,24 +122,24 @@ ML-From-Scratch/
 ├── README.md
 ├── .gitignore
 │
-└── linear_regression/                            # 6 complete implementations
-    ├── README.md                                 # Linear Regression overview
+└── linear_regression/
+    ├── README.md
     ├── data/
-    │   └── placement_SReg.csv                    # Sample dataset
+    │   └── placement_SReg.csv
     │
-    ├── closed_form/                              # Analytical solutions (OLS)
-    │   ├── README.md                             # Closed-form methods overview
+    ├── closed_form/
+    │   ├── README.md
     │   ├── simple_linear_regression/
-    │   │   ├── README.md                         # Documentation & Math
-    │   │   ├── SimLinReg.py                      # Least Squares implementation
-    │   │   └── simple_linear_regression.ipynb    # Full workflow notebook
+    │   │   ├── README.md
+    │   │   ├── SimLinReg.py
+    │   │   └── simple_linear_regression.ipynb
     │   └── multi_linear_regression/
-    │       ├── README.md                         # Documentation & Math
-    │       ├── LinRegClosed.py                   # Normal Equation implementation
-    │       └── multi_linear_regression.ipynb     # Full workflow notebook
+    │       ├── README.md
+    │       ├── LinRegClosed.py
+    │       └── multi_linear_regression.ipynb
     │
-    └── gradient_descent/                         # Iterative optimization
-        ├── README.md                             # Gradient Descent overview
+    └── gradient_descent/
+        ├── README.md
         ├── batch_gd/
         │   ├── simple_linear_regression_using_gradient_descent/
         │   │   ├── README.md
